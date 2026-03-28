@@ -218,8 +218,8 @@ body{
 
 /* --- COLUMNA IZQUIERDA (Textos) --- */
 .about-text-col {
-    flex: 1;
-    max-width: 550px;
+    flex: 2;
+    max-width: none;
 }
 
 /* Etiqueta "SOBRE MI" con línea debajo */
@@ -269,8 +269,8 @@ body{
 
 .features-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr); /* 2 columnas */
-    gap: 20px; /* Espacio entre las tarjetas */
+    grid-template-columns: 1fr; /* Cambiado a 1 sola columna para la tarjeta unificada */
+    gap: 20px;
 }
 
 .feature-card {
