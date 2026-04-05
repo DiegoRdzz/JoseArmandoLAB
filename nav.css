@@ -68,3 +68,57 @@
 .btn-nav:hover{
     background:#136a78;
 }
+
+/*RESPONSIVE*/
+
+/* =========================================
+   DISEÑO HAMBURGUESA (Tablets y Celulares)
+   ========================================= */
+
+/* Ocultamos el botón en escritorio por defecto */
+.menu-toggle {
+    display: none;
+    font-size: 30px;
+    color: #0b0d0f;
+    cursor: pointer;
+}
+
+/* -----------------------------------------
+   CELULARES Y TABLETS PEQUEÑAS (Pantallas menores a 768px)
+   ----------------------------------------- */
+@media (max-width: 768px) {
+    
+    /* Mostramos el icono de hamburguesa */
+    .menu-toggle {
+        display: block; 
+    }
+
+    /* Transformamos la barra en un menú desplegable vertical */
+    .nav-link {
+        position: absolute;
+        top: 70px; /* Altura aproximada de tu barra de navegación */
+        left: -100%; /* Oculto fuera de la pantalla hacia la izquierda */
+        flex-direction: column;
+        background-color: #ffffff;
+        width: 100%;
+        text-align: center;
+        padding: 30px 0;
+        gap: 30px; /* Espacio entre los enlaces */
+        box-shadow: 0 10px 15px rgba(0,0,0,0.05);
+        transition: left 0.3s ease; /* Efecto de deslizamiento suave */
+    }
+
+    /* Esta clase "active" la agregaremos con Javascript al tocar el botón */
+    .nav-link.active {
+        left: 0; /* Trae el menú de vuelta a la pantalla */
+    }
+
+    .nav-link li {
+        width: 100%;
+    }
+    
+    /* Ajuste para que el botón de contacto no ocupe toda la pantalla */
+    .btn-nav {
+        display: inline-block;
+    }
+}
