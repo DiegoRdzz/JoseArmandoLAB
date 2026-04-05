@@ -1,6 +1,7 @@
 // SCROLL PARA IMAGENES DEL LIBRO
 document.addEventListener('DOMContentLoaded', () => {
         const track = document.getElementById('sliderTrack');
+        if (!track) return;
         const dotsContainer = document.getElementById('sliderDots');
         const slides = track.querySelectorAll('.slide');
         

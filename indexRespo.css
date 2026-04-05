@@ -1,0 +1,210 @@
+/* =========================================
+   AJUSTES PREVIOS (Evitar estiramientos y centrar slider)
+   ========================================= */
+.about-cards-col {
+    flex: 1;
+    max-width: 500px; /* Evita que se estire a lo ancho de toda la tablet */
+    margin: 0 auto;   /* La mantiene centrada */
+    width: 100%;
+}
+
+.events-slider {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto; 
+    scroll-snap-type: x mandatory; 
+    padding-bottom: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    /* Eliminamos el justify-content: center */
+    -ms-overflow-style: none;  
+    scrollbar-width: none;  
+}
+
+.events-slider::-webkit-scrollbar {
+    display: none;
+}
+
+.event-card {
+    position: relative;
+    flex: 0 0 300px; 
+    height: 500px; 
+    border-radius: 16px;
+    overflow: hidden;
+    scroll-snap-align: center; /* Hace que siempre frene en el centro */
+    background-color: #161a1d;
+}
+
+/* =========================================
+   DISEÑO RESPONSIVO (Tablets y Celulares)
+   ========================================= */
+
+/* Contenedor general para dar margen lateral en dispositivos móviles */
+.container {
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+/* -----------------------------------------
+   TABLETS GRANDES (Pantallas menores a 992px)
+   ----------------------------------------- */
+@media (max-width: 992px) {
+    
+    /* 1. Sección Hero */
+    .hero-content {
+        flex-direction: column;
+        text-align: center;
+    }
+    .hero-text-col {
+        margin-bottom: 40px;
+        max-width: 100%;
+    }
+    .botones {
+        justify-content: center;
+    }
+    .hero-image-col {
+        justify-content: center;
+        width: 100%;
+    }
+
+    /* 2. Sección Sobre Mí */
+    .about-wrapper {
+        flex-direction: column;
+    }
+    .about-text-col {
+        max-width: 100%;
+        text-align: center;
+    }
+    .about-text-col .pGen[style*="text-align: center;"] {
+        margin-top: 30px;
+        margin-bottom: 30px;
+    }
+    .about-cards-col {
+        width: 100%;
+    }
+
+    /* 3. Sección Videos y Servicios (Pasan a 2 columnas) */
+    .videos-grid, .services-grid, .results-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    /* 4. Sección Mi Libro */
+    .book-wrapper {
+        flex-direction: column;
+        text-align: center;
+    }
+    .book-image-col {
+        justify-content: center;
+        margin-bottom: 20px;
+    }
+
+    /* 5. Sección Contacto */
+    .contact-wrapper {
+        flex-direction: column;
+    }
+    .contact-info-col {
+        max-width: 100%;
+        text-align: center;
+        margin-bottom: 40px;
+    }
+    .contact-details {
+        align-items: center; /* Centramos los datos de contacto */
+    }
+
+    /* 6. TRUCO MÁGICO PARA EL SLIDER DE EVENTOS */
+    .events-slider {
+        /* 150px es la mitad exacta de la tarjeta (que mide 300px). 
+           Esto asegura que el video inicial quede perfectamente centrado en pantalla */
+        padding-left: calc(50% - 150px);
+        padding-right: calc(50% - 150px);
+    }
+}
+
+/* -----------------------------------------
+   IPADS / TABLETS PEQUEÑAS (Pantallas menores a 768px)
+   ----------------------------------------- */
+@media (max-width: 768px) {
+    
+    /* Reducimos el padding superior e inferior para que no quede tanto espacio vacío en celular */
+    .uno, .cinco, .videos, .cuatro, .seis, .siete, .ocho, .nueve {
+        padding: 60px 0;
+    }
+
+    /* Ajuste de Títulos Generales para que no desborden */
+    .hero-text-col h1 {
+        font-size: 38px;
+    }
+    .about-text-col h2, 
+    .section-header-center h2, 
+    .book-text-col h2, 
+    .events-header h2, 
+    .results-intro h2, 
+    .contact-info-col h2 {
+        font-size: 32px;
+    }
+    .quote-renacer {
+        font-size: 26px;
+    }
+
+    /* Ajuste Botones Hero */
+    .botones {
+        flex-direction: column;
+        gap: 15px;
+    }
+    .botones button {
+        width: 100%;
+        justify-content: center;
+    }
+
+    /* Redimensionar Tarjeta de Perfil */
+    .profile-card {
+        height: 450px;
+    }
+
+    /* Ajuste Formulario Contacto */
+    .form-row {
+        flex-direction: column;
+        gap: 0;
+    }
+    .form-card {
+        padding: 25px; /* Menos espacio interno en pantallas pequeñas */
+    }
+
+    /* Footer */
+    .footer-content {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 40px;
+    }
+    .footer-brand, .footer-contact {
+        width: 100%;
+        align-items: center;
+    }
+    .social-icons {
+        justify-content: center;
+    }
+    
+    /* Mantenemos las 2 columnas en iPads para que no se estiren horriblemente */
+    .videos-grid, .services-grid, .results-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* -----------------------------------------
+   CELULARES (Pantallas menores a 576px)
+   ----------------------------------------- */
+@media (max-width: 576px) {
+    
+    /* Ahora sí, pasamos a 1 sola columna solo en teléfonos móviles */
+    .videos-grid, 
+    .services-grid, 
+    .results-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    /* Ajustamos el padding de la tarjeta del diagrama para ganar espacio en celular */
+    .feature-card {
+        padding: 25px 20px;
+    }
+}
