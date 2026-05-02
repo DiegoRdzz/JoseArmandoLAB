@@ -164,13 +164,10 @@
     <div class="container">
         
         <div class="results-intro">
-            <span class="section-subtitle-teal">NUESTRA COMUNIDAD</span>
-            <h2>Resultados Reales</h2>
-            
-            <p class="pGen lead-text">Forma parte de nuestro Renacer. Somos miles de personas en todo el mundo que están logrando algo maravilloso con nuestro Renacer, creado por José Armando.</p>
-            
-            <p class="pGen">Su historia relata la realidad de la vida, muestra que todo es posible para cada uno de ustedes.</p>
-            
+            <span class="section-subtitle-teal">EL COMIENZO</span>
+            <h2>Tu Camino al Renacer</h2>
+            <p class="pGen lead-text">Este es el inicio de una transformación profunda. Renacer es una metodología diseñada por José Armando para guiarle en el proceso de redescubrir su máximo potencial.</p>
+            <p class="pGen">A través de una historia de superación real, este espacio nace para demostrar que el cambio es posible para quien decide dar el primer paso.</p>
             <blockquote class="quote-renacer">
                 "Hoy es un hermoso día para renacer."
             </blockquote>
@@ -461,29 +458,29 @@
                 <div class="form-card">
                     <h3>Envia un mensaje</h3>
                     
-                    <form action="#" method="POST">
+                    <form id="contact-form" action="#" method="POST">
                         <div class="form-row">
                             <div class="form-group half-width">
                                 <label for="nombre">Nombre</label>
-                                <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required>
+                                <input type="text" id="nombre" name="name" placeholder="Ingrese su nombre completo" required>
                             </div>
                             <div class="form-group half-width">
                                 <label for="email">Email</label>
-                                <input type="email" id="email" name="email" placeholder="tu@email.com" required>
+                                <input type="email" id="email" name="email" placeholder="correo@email.com" required>
                             </div>
                         </div>
                         
                         <div class="form-group">
                             <label for="asunto">Asunto</label>
-                            <input type="text" id="asunto" name="asunto" placeholder="En que puedo ayudarte?" required>
+                            <input type="text" id="asunto" name="title" placeholder="Motivo de su consulta" required>
                         </div>
                         
                         <div class="form-group">
                             <label for="mensaje">Mensaje</label>
-                            <textarea id="mensaje" name="mensaje" rows="4" placeholder="Cuentame sobre ti y como puedo apoyarte..." required></textarea>
+                            <textarea id="mensaje" name="message" rows="4" placeholder="Por favor, detalle sus requerimientos para brindarle una mejor asesoría..." required></textarea>
                         </div>
                         
-                        <button type="submit" class="btn-submit-form">
+                        <button type="submit" class="btn-submit-form" id="button-send">
                             <i class="bi bi-send"></i> Enviar mensaje
                         </button>
                     </form>
@@ -500,6 +497,7 @@
             <div class="footer-brand">
                 <!--<img src="logo.png">-->
                 <span class="brand-name">Jose Armando LAB</span>
+                <img src="logo.png" class="logofot">
                 <!--<p>Tu plataforma de aprendizaje profesional.</p>-->
             </div>
 
@@ -510,6 +508,7 @@
                     <a href="https://www.instagram.com/josearmandolab/?utm_source=ig_web_button_share_sheet"><i class="bi bi-instagram"></i></a>
                     <a href="https://www.tiktok.com/@jose.armando.lab?_r=1&_t=ZS-94VI6miSAR0"><i class="bi bi-tiktok"></i></a>
                     <a href="https://youtube.com/@josearmandolab?si=hic3J9xWOIa9lEb9"><i class="bi bi-youtube"></i></a>
+                    <a href="https://open.spotify.com/show/4EPF2i5fz28eAB10c6s6tj?si=f3720b571acd4216"><i class="bi bi-spotify"></i></a>
                 </div>
             </div>
 
@@ -524,7 +523,44 @@
             <p>&copy; 2026 Jose Armando LAB. Todos los derechos reservados.</p>
         </div>
     </footer>
+
+                <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script type="text/javascript">
+    (function() {
+    // Reemplaza con tu Public Key de la sección "Account"
+    emailjs.init("XAndQwQxWqMLRQPB8");
+    })();
+    </script>
+    <script src="index.js"></script>
+    <script src="nav.js"></script>
+
+    <script>
+    // Usamos window.onload para asegurar que TODO el HTML ya cargó
+    window.onload = function() {
+        const btn = document.getElementById('button-send');
+        const form = document.getElementById('contact-form');
+
+        if(form) { // Verificamos que el formulario exista
+            form.addEventListener('submit', function(event) {
+               event.preventDefault();
+
+               btn.innerHTML = 'Enviando...';
+
+               const serviceID = 'service_50vj3wo';
+               const templateID = 'template_4lc2fi3';
+
+               emailjs.sendForm(serviceID, templateID, this)
+                .then(() => {
+                  btn.innerHTML = '¡Enviado!';
+                  alert('¡Mensaje enviado con éxito!');
+                  form.reset();
+                }, (err) => {
+                  btn.innerHTML = 'Error';
+                  alert("Error: " + JSON.stringify(err));
+                });
+            });
+        }
+    };
+    </script>
 </body>
-<script src="index.js"></script>
-<script src="nav.js"></script>
 </html>
