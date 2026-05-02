@@ -942,6 +942,10 @@ footer {
     text-align: center;
 }
 
+.logofot {
+    width: 120px;   /* ajusta este valor */
+    height: auto;   /* mantiene proporción */
+}
 
 /* =========================================
    SECCIÓN 8 (EVENTOS - Scroll Horizontal)
